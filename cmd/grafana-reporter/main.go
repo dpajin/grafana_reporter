@@ -22,8 +22,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/IzakMarais/reporter/grafana"
-	"github.com/IzakMarais/reporter/report"
+	"github.com/dpajin/grafana_reporter/grafana"
+	"github.com/dpajin/grafana_reporter/report"
 	"github.com/gorilla/mux"
 )
 
@@ -31,6 +31,7 @@ var proto = flag.String("proto", "http://", "Grafana Protocol. Change to 'https:
 var ip = flag.String("ip", "localhost:3000", "Grafana IP and port.")
 var port = flag.String("port", ":8686", "Port to serve on.")
 var templateDir = flag.String("templates", "templates/", "Directory for custom TeX templates.")
+var apiTokenArg = flag.String("apiTokenKey", "", "Grafana api key. Required (and only used) in command line mode.")
 var sslCheck = flag.Bool("ssl-check", true, "Check the SSL issuer and validity. Set this to false if your Grafana serves https using an unverified, self-signed certificate.")
 var gridLayout = flag.Bool("grid-layout", false, "Enable grid layout (-grid-layout=1). Panel width and height will be calculated based off Grafana gridPos width and height.")
 

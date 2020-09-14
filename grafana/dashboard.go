@@ -35,6 +35,8 @@ const (
 func (p PanelType) string() string {
 	return [...]string{
 		"singlestat",
+		"stat",
+		"gauge",
 		"text",
 		"graph",
 		"table",

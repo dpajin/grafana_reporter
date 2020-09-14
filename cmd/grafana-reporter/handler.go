@@ -27,8 +27,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/IzakMarais/reporter/grafana"
-	"github.com/IzakMarais/reporter/report"
+	"github.com/dpajin/grafana_reporter/grafana"
+	"github.com/dpajin/grafana_reporter/report"
 	"github.com/gorilla/mux"
 )
 
@@ -100,6 +100,10 @@ func time(r *http.Request) grafana.TimeRange {
 
 func apiToken(r *http.Request) string {
 	apiToken := r.URL.Query().Get("apitoken")
+	if apiToken == "" {
+		log.Println("Using API token configured in command line.")
+		return *apiTokenArg
+	}
 	log.Println("Called with api Token:", apiToken)
 	return apiToken
 }
